@@ -3,6 +3,8 @@ const fs = require('fs');
 
 function readMe(title, description, instructions, usage, license, contributing, test, github, linkedin, email) {
     `
+[![License](https://img.shields.io/github/license/tbohn2/prework-study-guide)](#license)
+
 # ${title}
 
 <details>
