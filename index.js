@@ -5,11 +5,22 @@ function readMe(title, description, instructions, usage, test, github, linkedin,
     `
 # ${title}
 
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#test">Roadmap</a></li>
+    <li><a href="#questions">Questions</a></li>
+  </ol>
+</details>
+
 ## Description
 
 ${description}
 
-## Installation instructions
+## Installation
 
 ${instructions}
 
