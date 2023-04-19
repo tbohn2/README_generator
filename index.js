@@ -115,7 +115,7 @@ inquirer
         },
     ])
     .then((answers) => {
-        console.log(answers);
+        answers.license = answers.license.replace(/ /g, "-")
         const newReadMe = readMe(answers);
         fs.writeFile('newREADME.md', newReadMe, (err) =>
             err ? console.log(err) : console.log('README created as newREADME.md')
