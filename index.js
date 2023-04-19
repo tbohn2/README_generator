@@ -1,9 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-function readMe(title, description, instructions, usage, license, contributing, test, github, linkedin, email) {
+const readMe = ({ title, description, instructions, usage, license, contributing, test, github, linkedin, email }) =>
     `
-[![License](https://img.shields.io/github/license/tbohn2/prework-study-guide)](#license)
+[![License](https://img.shields.io/static/v1?label=License&message=${license}&color=brightgreen)](#license)
 
 # ${title}
 
@@ -51,8 +51,7 @@ Feel free to contact the developer with any further questions:
     Email: ${email}
 
 The application repository found at [${github}]${github}
-`
-}
+`;
 
 inquirer
     .prompt([
@@ -102,7 +101,7 @@ inquirer
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your GitHub URL.',
+            message: 'What is your GitHub username?',
         },
         {
             type: 'input',
@@ -117,5 +116,8 @@ inquirer
     ])
     .then((answers) => {
         console.log(answers);
-    }
-    )
+        const newReadMe = readMe(answers);
+        fs.writeFile('newREADME.md', newReadMe, (err) =>
+            err ? console.log(err) : console.log('README created as newREADME.md')
+        )
+    })
