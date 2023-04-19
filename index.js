@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-function readMe(title, description, instructions, usage, test, github, linkedin, email) {
+function readMe(title, description, instructions, usage, license, contributing, test, github, linkedin, email) {
     `
 # ${title}
 
@@ -27,6 +27,14 @@ ${instructions}
 ## Usage
 
 ${usage}
+
+## License
+
+${license}
+
+## Contribution
+
+${contributing}
 
 ## Test
 
@@ -63,6 +71,16 @@ inquirer
             type: 'input',
             name: 'usage',
             message: 'What usage information would you like to include about your project?',
+        },
+        {
+            type: 'input',
+            name: 'license',
+            message: 'Which license is used for the project?',
+        },
+        {
+            type: 'input',
+            name: 'contributing',
+            message: 'What contributing guidelines are in place for this application?',
         },
         {
             type: 'input',
