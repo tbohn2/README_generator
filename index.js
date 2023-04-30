@@ -1,7 +1,10 @@
+// Makes inquirer and fs usable in Javascript
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// Creates a variable that takes in the user input and places them into a template literal formatted as a README file
 const readMe = ({ title, description, instructions, usage, license, contributing, test, github, linkedin, email }) =>
+    // shields.io is used to create an image diplaying what license is used for the user's project
     `
 [![License](https://img.shields.io/static/v1?label=License&message=${license}&color=brightgreen)](#license)
 
@@ -53,6 +56,7 @@ Feel free to contact the developer with any further questions:
 The application repository found at https://www.github.com/${github}
 `;
 
+// The user is prompted to type or select responses to create the various parts of the README 
 inquirer
     .prompt([
         {
@@ -114,9 +118,13 @@ inquirer
             message: 'Enter your email address.',
         },
     ])
+    // The answers are used to write a new file named 'newREADME.md'
     .then((answers) => {
+        // Replaces spaces in licence selection with hyphens in order to be usable for image creation using shields.io
         answers.license = answers.license.replace(/ /g, "-")
+        // Creates a variable equal to the function readMe() with the user's answers
         const newReadMe = readMe(answers);
+        // A new markdown file is created using the newReadMe variable
         fs.writeFile('newREADME.md', newReadMe, (err) =>
             err ? console.log(err) : console.log('README created as newREADME.md')
         )
