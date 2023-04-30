@@ -50,7 +50,7 @@ Feel free to contact the developer with any further questions:
     LinkedIn: ${linkedin}
     Email: ${email}
 
-The application repository found at [${github}]${github}
+The application repository found at https://www.github.com/${github}
 `;
 
 inquirer
